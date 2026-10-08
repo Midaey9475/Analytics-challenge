@@ -1,339 +1,183 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="analytics.css">
+    <meta name="description" content="A sales analytics dashboard built with HTML, CSS and JavaScript.">
+    <title>Analytics Dashboard</title>
+    <link rel="icon" href="assets/icons/dashboard.svg">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Family used in the design -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <aside>
-        <div class="menu1">
+
+    <!-- THE SIDEBAR -->
+    <aside id="sidebar">
+        <nav class="menu-top" aria-label="Main menu">
             <ul>
-                <li>
-                    <a href="#">
-                        <img src="dashboard.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="category.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="trend-up.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="profile-2user.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="box.png" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="discount.png" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="info-circle.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="#">
-                            <img src="lightmode.svg" alt="">
-                        </a>
-                        <a href="#">
-                            <img src="moon 1.svg" alt="">
-                        </a>
-                    </div>
-                </li>
+                <li><a href="#" aria-label="Home"><img src="assets/icons/dashboard.svg" alt=""></a></li>
+                <!-- "active" marks the page we are currently on -->
+                <li class="active"><a href="#" aria-label="Overview" aria-current="page"><img class="dark-icon" src="assets/icons/category.svg" alt=""></a></li>
+                <li><a href="#" aria-label="Trends"><img src="assets/icons/trend-up.svg" alt=""></a></li>
+                <li><a href="#" aria-label="Customers"><img src="assets/icons/profile-2user.svg" alt=""></a></li>
+                <li><a href="#" aria-label="Products"><img src="assets/icons/box.png" alt=""></a></li>
+                <li><a href="#" aria-label="Discounts"><img src="assets/icons/discount.png" alt=""></a></li>
+                <li><a href="#" aria-label="Help"><img src="assets/icons/info-circle.svg" alt=""></a></li>
             </ul>
-        </div>
-        <div class="menu2">
+
+            <!-- Light / dark mode toggle -->
+            <div class="theme-toggle" role="group" aria-label="Colour theme">
+                <button type="button" id="light-btn" class="theme-btn active" aria-label="Light mode" aria-pressed="true">
+                    <img src="assets/icons/lightmode.svg" alt="">
+                </button>
+                <button type="button" id="dark-btn" class="theme-btn" aria-label="Dark mode" aria-pressed="false">
+                    <img src="assets/icons/moon.svg" alt="">
+                </button>
+            </div>
+        </nav>
+
+        <nav class="menu-bottom" aria-label="Account menu">
             <ul>
-                <li>
-                    <a href="#">
-                        <img src="arrow-right.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="setting-2.svg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="logout.svg" alt="">
-                    </a>
-                </li>
+                <li><a href="#" aria-label="Expand menu"><img src="assets/icons/arrow-right.svg" alt=""></a></li>
+                <li><a href="#" aria-label="Settings"><img src="assets/icons/settings.svg" alt=""></a></li>
+                <li><a href="#" aria-label="Log out"><img src="assets/icons/logout.svg" alt=""></a></li>
             </ul>
-        </div>
+        </nav>
     </aside>
-    <!-- main menu -->
+
+    <!-- MAIN PART OF THE PAGE -->
     <main>
-        <div class="dashboard">
-            <div class="dash-icon">
-                <a href="#">
-                    <img src="dashboard.svg" alt="">
-                </a>
-            </div>
-            <p>Dashboard</p>
-            <div class="dash_menu">
-                <div class="menu-search">
-                    <img src="Icon - Search.svg" alt="">
-                    <input type="text" placeholder="Search">
-                </div>
-                <div class="menu-calender">
-                    <img src="solar_calendar-linear.svg" alt="">
-                    <p>November 15, 2023</p>
-                </div>
-                <div class="menu-notification">
-                    <a href="#">
-                        <img src="solar_bell-outline.svg" alt="">
-                    </a>
-                </div>
-                <a href="#">
-                    <div class="menu-profile">
-                        <div class="Ppic"></div>
-                        <div class="Pname">
-                            <p>Justin Bergson</p>
-                            <p style="color: rgb(154, 157, 160);">Justin@gmail.com</p>
-                        </div>
-                        <img src="Arrow---Down-2.svg" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="hamburger">
-                <a href="#">
-                    <img src="hamburger.png" alt="">
-                </a>
-            </div>
-        </div>
 
-        <div class="sales-trend">
-            <div class="trend-chart">
-                <a href="#"><img src="Recent files Table.png" alt=""></a>
-            </div>
-            <div class="trend-chart2">
-                <!-- First chart - Total Order -->
-                <div class="chart-total">
-                    <div class="total-order">
-                        <div>
-                            <img src="total order.svg" alt="">
-                        </div>
-                        <img style="width: 50%; height: auto;" src="total-order.svg" alt="">
-                    </div>
-                    <p>Total Order</p>
-                    <b>350</b>
-                    <div class="previous-month">
-                        <div class="rates">
-                            <img src="positive-rise.svg" alt=""> 23.5%
-                        </div>
-                        <p>vs. previous month</p>
-                    </div>
-                </div>
-                <!-- Second chart - Total Refund -->
-                <div class="chart-total">
-                    <div class="total-order">
-                        <div>
-                            <img src="Total refund.svg" alt="">
-                        </div>
-                        <img style="width: 50%; height: auto;" src="total-refunds.svg" alt="">
-                    </div>
-                    <p>Total Refund</p>
-                    <b>270</b>
-                    <div class="previous-month">
-                        <div class="rates" style="color: #ED544E; background: #f8c3c2;">
-                            <img src="negative-rise.svg" alt=""> 23.5%
-                        </div>
-                        <p>vs. previous month</p>
-                    </div>
-                </div>     
-                <!-- Third chart - Average Sales -->
-                <div class="chart-total">
-                    <div class="total-order">
-                        <div>
-                            <img src="shopping-cart.svg" alt="">
-                        </div>
-                        <img style="width: 50%; height: auto;" src="average-sale.svg" alt="">
-                    </div>
-                    <p>Average Sales</p>
-                    <b>1567</b>
-                    <div class="previous-month">
-                        <div class="rates" style="color: #ED544E; background: #f8c3c2;">
-                            <img src="negative-rise.svg" alt=""> 23.5%
-                        </div>
-                        <p>vs. previous month</p>
-                    </div>
-                </div>
-                <!-- Fourth chart - Total Income -->
-                <div class="chart-total">
-                    <div class="total-order">
-                        <div>
-                            <img src="total income.svg" alt="">
-                        </div>
-                        <img style="width: 50%; height: auto;" src="total-order.svg" alt="">
-                    </div>
-                    <p>Total Income</p>
-                    <b>$350.000</b>
-                    <div class="previous-month">
-                        <div class="rates">
-                            <img src="positive-rise.svg" alt=""> 23.5%
-                        </div>
-                        <p>vs. previous month</p>
-                    </div>
-                </div>
-            </div>
-        </div>        
+        <!-- ----- Top bar: title, search, date, notifications, profile ----- -->
+        <header class="topbar">
+            <!-- Logo: only visible on small screens -->
+            <a href="#" class="topbar-logo" aria-label="Home"><img src="assets/icons/dashboard.svg" alt=""></a>
 
-        <div class="sales-trend2">
-            <div class="last-orders">
-                <div class="order-headingtxt">
+            <h1>Dashboard</h1>
+
+            <div class="topbar-menu">
+                <div class="search-box">
+                    <img src="assets/icons/search.svg" alt="">
+                    <label for="search" class="sr-only">Search orders by customer name</label>
+                    <input type="text" id="search" placeholder="Search orders">
+                </div>
+
+                <div class="date-box">
+                    <img class="dark-icon" src="assets/icons/calendar.svg" alt="">
+                    <p id="today-date"></p>
+                </div>
+
+                <button type="button" class="bell-btn" aria-label="Notifications">
+                    <img class="dark-icon" src="assets/icons/bell.svg" alt="">
+                </button>
+
+                <a href="#" class="profile-box">
+                    <img class="avatar" src="assets/images/profile-justin.jpg" alt="">
+                    <span class="profile-text">
+                        <span>Justin Bergson</span>
+                        <span class="profile-email">Justin@gmail.com</span>
+                    </span>
+                    <img class="dark-icon profile-arrow" src="assets/icons/arrow-down.svg" alt="">
+                </a>
+            </div>
+
+            <!-- Menu button: This will only be visible on small screens too -->
+            <button type="button" id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">
+                <img src="assets/icons/hamburger.png" alt="">
+            </button>
+        </header>
+
+        <!-- Row 1: sales chart and the four small cards -->
+        <section class="row-one">
+
+            <article class="card chart-card">
+                <div class="card-heading">
+                    <h2>Sales Trends</h2>
+                    <div class="sort-box">
+                        <label for="period">Sort by:</label>
+                        <select id="period">
+                            <option value="monthly">Monthly</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Chart.js draws the chart inside this canvas -->
+                <div class="chart-box" id="chart-box">
+                    <canvas id="sales-chart" aria-label="Bar chart of sales" role="img"></canvas>
+                </div>
+            </article>
+
+            <!-- The four small cards are added here by main.js -->
+            <div class="stats" id="stats"></div>
+
+        </section>
+
+        <!-- ----- Row 2: last orders table + top platforms ----- -->
+        <section class="row-two">
+
+            <article class="card orders-card">
+                <div class="card-heading">
                     <h2>Last orders</h2>
-                    <a href="#">See All</a>
+                    <button type="button" id="orders-toggle" class="see-all">See All</button>
                 </div>
-                <div class="table-heading">
-                    <ul>
-                        <li>Name</li>
-                        <li>Date</li>
-                        <li>Amount</li>
-                        <li>Status</li>
-                        <li>Invoice</li>
-                    </ul>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Date</th>
+                                <th scope="col" class="hide-on-mobile">Amount</th>
+                                <th scope="col" class="hide-on-mobile">Status</th>
+                                <th scope="col">Invoice</th>
+                            </tr>
+                        </thead>
+                        <!-- The table rows are added here by main.js -->
+                        <tbody id="orders-body"></tbody>
+                    </table>
                 </div>
-                <div class="table-body">
-                    <ul>
-                        <li>
-                            <div class="cus-DP"></div>
-                            <p>Marcus Bergson</p>
-                        </li>
-                        <li style="font-size: 12px;">Nov 15, 2023</li>
-                        <li style="font-size: 14px; font-weight: 600;">$18,000</li>
-                        <li style="color: #34CAA5;">Paid</li>
-                        <li>
-                            <img src="view.svg" alt="">
-                            <a href="#">View</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="table-body">
-                    <ul>
-                        <li>
-                            <div class="cus-DP" style="background-image: url(Ppic3.jpg);"></div>
-                            <p>Jaydon Vaccaro</p>
-                        </li>
-                        <li style="font-size: 12px;">Nov 15, 2023</li>
-                        <li style="font-size: 14px; font-weight: 600;">$150,000</li>
-                        <li style="color: #ED544E;">Refund</li>
-                        <li>
-                            <img src="view.svg" alt="">
-                            <a href="#">View</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="table-body">
-                    <ul>
-                        <li>
-                            <div class="cus-DP" style="background-image: url(Ppic4.jpg);"></div>
-                            <p>Corey Schleifer</p>
-                        </li>
-                        <li style="font-size: 12px;">Nov 14, 2023</li>
-                        <li style="font-size: 14px; font-weight: 600;">$87,000</li>
-                        <li style="color: #34CAA5;">Paid</li>
-                        <li>
-                            <img src="view.svg" alt="">
-                            <a href="#">View</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="table-body">
-                    <ul>
-                        <li>
-                            <div class="cus-DP" style="background-image: url(Ppic5.jpg);"></div>
-                            <p>Cooper Press</p>
-                        </li>
-                        <li style="font-size: 12px;">Nov 14, 2023</li>
-                        <li style="font-size: 14px; font-weight: 600;">$100,000</li>
-                        <li style="color: #ED544E;">Refund</li>
-                        <li>
-                            <img src="view.svg" alt="">
-                            <a href="#">View</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="table-body">
-                    <ul>
-                        <li>
-                            <div class="cus-DP" style="background-image: url(Ppic6.jpg);"></div>
-                            <p>Phillip Lubin</p>
-                        </li>
-                        <li style="font-size: 12px;">Nov 14, 2023</li>
-                        <li style="font-size: 14px; font-weight: 600;">$78,000</li>
-                        <li style="color: #34CAA5;">Paid</li>
-                        <li>
-                            <img src="view.svg" alt="">
-                            <a href="#">View</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="top-platform">
-                <div class="platform-headingtxt">
+            </article>
+
+            <article class="card platform-card">
+                <div class="card-heading">
                     <h2>Top Platform</h2>
-                    <a href="#">See All</a>
+                    <button type="button" id="platform-toggle" class="see-all">See All</button>
                 </div>
-                <div class="platform-body">
-                    <h3>Book Bazaar</h3>
-                    <div class="platform-progress">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <div class="platform-rate">
-                        <h3>$2,500,000</h3>
-                        <h3>+15%</h3>
-                    </div>
-                </div>
-                <div class="platform-body">
-                    <h3>Artisan Aisle</h3>
-                    <div class="platform-progress">
-                        <div class="progress-bar" style="background: #54C5EB; width: 40%;"></div>
-                    </div>
-                    <div class="platform-rate">
-                        <h3>$1,800,000</h3>
-                        <h3>+10%</h3>
-                    </div>
-                </div>
-                <div class="platform-body">
-                    <h3>Toy Troop</h3>
-                    <div class="platform-progress">
-                        <div class="progress-bar" style="background: #FFB74A; width: 30%;"></div>
-                    </div>
-                    <div class="platform-rate">
-                        <h3>$1,200,000</h3>
-                        <h3>+8%</h3>
-                    </div>
-                </div>
-                <div class="platform-body">
-                    <h3>X Store</h3>
-                    <div class="platform-progress">
-                        <div class="progress-bar" style="background: #ED544E; width: 25%;"></div>
-                    </div>
-                    <div class="platform-rate">
-                        <h3>$600,000</h3>
-                        <h3>+5%</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+                <!-- The platforms will be updated here by main.js -->
+                <div id="platform-list"></div>
+            </article>
+
+        </section>
     </main>
+
+
+    <!-- INVOICE POPUP (opens when we click "View") -->
+    <dialog id="order-dialog">
+        <h2>Invoice <span id="dialog-number"></span></h2>
+        <dl>
+            <dt>Customer</dt>
+            <dd id="dialog-name"></dd>
+            <dt>Date</dt>
+            <dd id="dialog-date"></dd>
+            <dt>Amount</dt>
+            <dd id="dialog-amount"></dd>
+            <dt>Status</dt>
+            <dd id="dialog-status"></dd>
+        </dl>
+        <button type="button" id="dialog-close" class="close-btn">Close</button>
+    </dialog>
+
+
+    <!-- Chart.js library that draws the chart for me -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+    <!-- my own code log to configure the chart: data first, because main.js needs it -->
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
-
-
-

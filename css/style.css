@@ -1,0 +1,743 @@
+/* =====================================================
+   ANALYTICS DASHBOARD - STYLES
+   Sections:
+   1. Colours and basic setup
+   2. Sidebar
+   3. Top bar
+   4. Cards (shared)
+   5. Sales chart
+   6. Small stat cards
+   7. Orders table
+   8. Top platforms
+   9. Invoice popup
+   10. Dark mode
+   11. Tablet and phone screens
+   ===================================================== */
+
+
+/* ---------- 1. COLOURS AND BASIC SETUP ---------- */
+
+/* Colours are saved as variables here, so dark mode can swap them all at once */
+:root {
+    --page-bg: #fafafa;
+    --card-bg: #ffffff;
+    --sidebar-bg: #f7f8fa;
+    --border: #ebecf2;
+    --text: #2b2d31;
+    --muted: #6b6e72;       /* grey text (dark enough to read easily) */
+    --green: #34caa5;
+    --green-text: #167f64;  /* darker green for small text */
+    --green-soft: #d8f6ee;
+    --red: #ed544e;
+    --red-text: #c4352f;
+    --red-soft: #fbdedc;
+    --row-hover: #f5f7fa;
+}
+
+/* Border-box means padding is counted inside the width, which is easier to work with */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background-color: var(--page-bg);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+/* Shows a clear outline when someone uses the keyboard (Tab key) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+}
+
+/* Hides text on screen but keeps it for screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+
+/* ---------- 2. SIDEBAR ---------- */
+
+aside {
+    position: sticky;      /* stays in place while the page scrolls */
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    width: 60px;
+    height: 100vh;
+    padding: 8px 0 20px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+}
+
+.menu-top,
+.menu-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+aside ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+aside li {
+    display: flex;
+    justify-content: center;
+}
+
+aside li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+/* The page we are on gets a bar on the right edge */
+aside li.active {
+    box-shadow: inset -3px 0 0 var(--text);
+}
+
+/* The light / dark switch */
+.theme-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 3px;
+    background-color: var(--card-bg);
+    border-radius: 20px;
+}
+
+.theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.theme-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+/* The button for the theme that is switched on */
+.theme-btn.active {
+    background-color: var(--border);
+}
+
+
+/* ---------- 3. TOP BAR ---------- */
+
+main {
+    flex: 1;
+    min-width: 0;          /* lets the content shrink instead of overflowing */
+    padding-bottom: 30px;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    height: 64px;
+    padding: 0 16px;
+    background-color: var(--page-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* These two only show on small screens (see section 11) */
+.topbar-logo,
+.hamburger {
+    display: none;
+}
+
+.topbar-menu {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    max-width: 336px;
+    height: 36px;
+    padding: 0 12px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.search-box:focus-within {
+    border-color: var(--green);
+}
+
+.date-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.bell-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+}
+
+.profile-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px 4px 4px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 13px;
+}
+
+.profile-email {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+
+/* ---------- 4. CARDS (shared by every box) ---------- */
+
+.card {
+    padding: 20px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+.card h2 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* The "See All" buttons */
+.see-all {
+    font-size: 14px;
+    color: var(--green-text);
+}
+
+.see-all:hover {
+    text-decoration: underline;
+}
+
+/* The two big rows of the page */
+.row-one,
+.row-two {
+    display: grid;
+    gap: 16px;
+    padding: 16px 16px 0;
+}
+
+.row-one {
+    grid-template-columns: 1.7fr 1fr;   /* chart is wider than the small cards */
+}
+
+.row-two {
+    grid-template-columns: 1.8fr 1fr;
+}
+
+
+/* ---------- 5. SALES CHART ---------- */
+
+.sort-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Our own look for the dropdown */
+.sort-box select {
+    appearance: none;
+    padding: 6px 34px 6px 14px;
+    background: var(--card-bg) url("../assets/icons/arrow-down.svg") no-repeat right 12px center;
+    background-size: 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* The chart needs a set height so Chart.js knows how big to draw */
+.chart-box {
+    position: relative;
+    height: 320px;
+}
+
+.chart-error {
+    padding-top: 100px;
+    text-align: center;
+    color: var(--muted);
+}
+
+
+/* ---------- 6. SMALL STAT CARDS ---------- */
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.stat-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+}
+
+.stat-line {
+    width: 50%;
+    max-width: 106px;
+}
+
+.stat-title {
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.stat-value {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.stat-note {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* The little green / red percentage badge */
+.badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.badge img {
+    width: 12px;
+    height: 12px;
+}
+
+.badge-up {
+    color: var(--green-text);
+    background-color: var(--green-soft);
+}
+
+.badge-down {
+    color: var(--red-text);
+    background-color: var(--red-soft);
+}
+
+
+/* ---------- 7. ORDERS TABLE ---------- */
+
+/* If the table is too wide, it scrolls sideways inside this box */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 8px 10px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+    background-color: var(--row-hover);
+}
+
+.customer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.customer img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.amount {
+    font-weight: 600;
+}
+
+.status-paid {
+    color: var(--green-text);
+}
+
+.status-refund {
+    color: var(--red-text);
+}
+
+.view-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.view-btn:hover {
+    text-decoration: underline;
+}
+
+.view-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Message shown when the search finds nothing */
+.empty-row td {
+    padding: 30px 10px;
+    text-align: center;
+    color: var(--muted);
+}
+
+
+/* ---------- 8. TOP PLATFORMS ---------- */
+
+.platform {
+    margin-bottom: 18px;
+}
+
+.platform-name {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* The grey track behind the coloured bar */
+.progress {
+    height: 8px;
+    margin-bottom: 8px;
+    background-color: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* The coloured bar (its width and colour are set from main.js) */
+.progress-fill {
+    height: 100%;
+    border-radius: 10px;
+}
+
+.platform-numbers {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+
+/* ---------- 9. INVOICE POPUP ---------- */
+
+dialog {
+    margin: auto;           /* puts the popup in the middle of the screen */
+    width: 320px;
+    padding: 24px;
+    color: var(--text);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+dialog h2 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+dialog dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px 16px;
+    margin-bottom: 20px;
+}
+
+dialog dt {
+    color: var(--muted);
+}
+
+dialog dd {
+    font-weight: 500;
+    text-align: right;
+}
+
+.close-btn {
+    width: 100%;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #167f64;
+    border-radius: 10px;
+}
+
+.close-btn:hover {
+    background-color: #126a54;
+}
+
+
+/* ---------- 10. DARK MODE ---------- */
+/* main.js adds the class "dark" to the body.
+   We only need to swap the colour variables from section 1. */
+
+body.dark {
+    --page-bg: #12141a;
+    --card-bg: #1c1f27;
+    --sidebar-bg: #171a21;
+    --border: #2a2e38;
+    --text: #e8e9ec;
+    --muted: #a0a6b1;
+    --green-text: #5fe0bf;
+    --green-soft: #1e3d37;
+    --red-text: #ff8a84;
+    --red-soft: #4a2423;
+    --row-hover: #232731;
+}
+
+/* Some icons are dark blue, which would disappear on a dark background.
+   invert(1) flips them to white. */
+body.dark .dark-icon {
+    filter: invert(1);
+}
+
+/* The dropdown arrow is a background image, so it needs a white copy of its own */
+body.dark .sort-box select {
+    background-image: url("../assets/icons/arrow-down-light.svg");
+}
+
+body.dark .close-btn {
+    background-color: #1e9c7b;
+}
+
+
+/* ---------- 11. TABLET AND PHONE SCREENS ---------- */
+
+/* Smaller laptops: stack the rows and put the 4 small cards in one line */
+@media (max-width: 1280px) {
+    .row-one,
+    .row-two {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablets: only 2 small cards per line */
+@media (max-width: 900px) {
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Phones: the sidebar hides and slides in when the menu button is pressed */
+@media (max-width: 768px) {
+    aside {
+        position: fixed;
+        left: 0;
+        transform: translateX(-100%);
+        transition: transform 0.25s;
+    }
+
+    aside.open {
+        transform: translateX(0);
+    }
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .topbar h1,
+    .date-box,
+    .bell-btn,
+    .profile-text,
+    .profile-arrow {
+        display: none;
+    }
+
+    .topbar-logo,
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .profile-box {
+        padding: 0;
+        border: none;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+/* Small phones: one small card per line */
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 16px;
+    }
+}
+
+/* People who turn off animations in their settings will not see the slide */
+@media (prefers-reduced-motion: reduce) {
+    aside {
+        transition: none;
+    }
+}
