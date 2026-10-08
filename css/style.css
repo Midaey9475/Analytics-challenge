@@ -656,6 +656,17 @@ body.dark .sort-box select {
 body.dark .close-btn {
     background-color: #1e9c7b;
 }
+footer{
+    display: flex;
+    width: 100%;
+    align-items: center; justify-content: end;
+    padding-right: 20px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+.brandLogo{
+    height: 24px;
+}
 
 
 /* ---------- 11. TABLET AND PHONE SCREENS ---------- */
